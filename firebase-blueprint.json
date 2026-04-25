@@ -1,0 +1,22 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "Storage for user profiles logged via Google Auth",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Display name" },
+        "email": { "type": "string", "format": "email", "description": "User email address" },
+        "photoURL": { "type": "string", "description": "Profile picture URL" },
+        "lastLogin": { "type": "string", "format": "date-time", "description": "ISO timestamp of last login" }
+      },
+      "required": ["name", "email"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "User",
+      "description": "Individual user document indexed by Auth UID"
+    }
+  }
+}
